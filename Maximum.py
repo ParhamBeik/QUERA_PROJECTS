@@ -1,4 +1,4 @@
 amountOfNumbers=int(input())
-myList=[]
-[myList.append(int(input())) for _ in range(amountOfNumbers)]
-print(max(myList))
+input_string = input()
+int_list = list(map(int,input_string.split()))
+print(max(int_list))
