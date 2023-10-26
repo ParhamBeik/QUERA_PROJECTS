@@ -1,5 +1,4 @@
-def myFunction():
-    amountOfNumbers=int(input())
-    myList=[]
-    [myList.append(int(input())) for _ in range(amountOfNumbers)]
-    print(max(myList))
+amountOfNumbers=int(input())
+myList=[]
+[myList.append(int(input(1))) for _ in range(amountOfNumbers)]
+print(max(myList))
