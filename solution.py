@@ -2,13 +2,10 @@ def calculator(n, m, li):
     newList=[]
     addedNumbers=0
     numberItertedCount=1
-    start=0
-    finish=3
+    indexCount=0
     while numberItertedCount!=m and len(li)!=0:
-        for number in li[start:finish:]:
-            addedNumbers+=number
-        start+=m
-        finish+=m
+        for _ in range(m):
+            addedNumbers+=li[indexCount]
         newList.append(addedNumbers)
         addedNumbers=0
         numberItertedCount+=1
