@@ -15,5 +15,14 @@ def calculator(n, m, li):
         newList.append(addedNumbers)
         addedNumbers=0
         numbersThatShouldBeSummed.clear()
-    print(newList)
-calculator(8,3,[1,2,3,4,5,6,7,8])
+    indexCount=0
+    finalResault=0
+    while indexCount<=len(newList):
+        finalResault+=newList[indexCount]
+        indexCount+=1
+        try:
+            finalResault=finalResault-newList[indexCount]
+        except IndexError:
+            break
+    print(finalResault)
+calculator(8, 1, [1, 2, 3, 4, 5, 6, 7, 8])
