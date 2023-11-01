@@ -1,12 +1,26 @@
-x1=int(input())
-y1=int(input())
-x2=int(input())
-y2=int(input())
-x3=int(input())
-y3=int(input())
-if x1==x2 or x1==x3 or x2==x3:
-    print("Vertical!")
-elif y1==y2 or y1==y3 or y2==y3:
-    print("Horizontal, I can finally cogitate!")
-else:
-    print("Not this time then!")
+nameOfTotalPlayers=["X","Y"]
+nameOfPlayerStarted=input()
+startingNumber=int(input())
+if startingNumber==1:
+    print(startingNumber)
+numberOfRounds=0 
+index=0
+while startingNumber!=1:
+    if index==0:
+        print(startingNumber,end=" ")
+        index+=1
+    if startingNumber%2==0:
+        startingNumber=startingNumber//2
+        if startingNumber!=1:
+            print(startingNumber,end=" ")
+        else:
+            print(startingNumber)
+        numberOfRounds+=1
+    else:
+        startingNumber=startingNumber*3+1
+        if startingNumber!=1:
+            print(startingNumber,end=" ")
+        else:
+            print(startingNumber)
+        numberOfRounds+=1
+print(nameOfTotalPlayers[0])
