@@ -1,23 +1,28 @@
 def calculator(n, m, li):
     newList=[]
-    addednumbers=0
-    indexNumber=0
-    if type(n/m)==int:
-        indexNumber=n//m
-    else:
-        indexNumber=n//m+1
-    for _ in range(indexNumber):
-        if len(li)>=3:
-            for number in range(m):
-                addednumbers+=li[number]
-                li.pop(number)
-            newList.append(addednumbers)
-            addednumbers=0
-        else:
-            for number in range(len(li)-1):
-                addednumbers+=li[number]
-                li.pop(number)
-            newList.append(addednumbers)
-            addednumbers=0
-    print(newList)
-calculator(8,3,[1,2,3,4,5,6,7,8])
+    numbersThatShouldBeSummed=[]
+    addedNumbers=0
+    indexCount=0
+    while indexCount<len(li):
+        while len(numbersThatShouldBeSummed)<3:
+            try:
+                numbersThatShouldBeSummed.append(li[indexCount])
+            except IndexError:
+                break
+            indexCount+=1
+        for number in numbersThatShouldBeSummed:
+            addedNumbers+=number
+        newList.append(addedNumbers)
+        addedNumbers=0
+        numbersThatShouldBeSummed.clear()
+    indexCount=0
+    finalResault=0
+    while indexCount<=len(newList):
+        finalResault+=newList[indexCount]
+        indexCount+=1
+        try:
+            finalResault=finalResault-newList[indexCount]
+        except IndexError:
+            break
+    print(finalResault)
+calculator(8, 1, [1, 2, 3, 4, 5, 6, 7, 8])
