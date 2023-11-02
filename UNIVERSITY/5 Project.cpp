@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
 int main() {
     vector<string> nameOfTotalPlayers = {"X", "Y"};
     string nameOfPlayerStarted;
