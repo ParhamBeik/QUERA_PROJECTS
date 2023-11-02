@@ -9,14 +9,13 @@ int main() {
     cin >> finishingNumber;
     cin >> base;
 
-    vector<int> listOfNumbers;
+    std::vector<int> listOfNumbers;
     for (int number = startingNumber + 1; number < finishingNumber; number++) {
         listOfNumbers.push_back(number);
     }
 
     vector<int> sumOfTheDigitsOfNumbers;
     vector<int> listOfDigits;
-    
     for (int number = startingNumber + 1; number < finishingNumber; number++) {
         int sumOfDigits = 0;
         while (number != 0) {
@@ -37,8 +36,9 @@ int main() {
         }
     }
 
-    cout << listOfNumbers[maxIndex];
+    cout << listOfNumbers[maxIndex] << endl;
 
     return 0;
 }
+
 
