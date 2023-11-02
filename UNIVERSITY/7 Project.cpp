@@ -13,7 +13,7 @@ int main() {
             listOfNumbers.push_back(newNumber);
         }
     }
-    int totalSum = 0;
+    long long int totalSum = 0;
     for (int number : listOfNumbers) {
         totalSum += number;
     }
