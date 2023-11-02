@@ -9,15 +9,22 @@ while variable<=firstNumber*10:
     listOfSecondOddNumbers.append(secondNumber%variable - secondNumber%(variable//10))
     variable*=10
 
-indexCorrection=100
+emptyBucket=0
 
-for index in range(0,len(listOfSecondOddNumbers),2):
-    listOfFirstOddNumbers[index]*=indexCorrection
-    listOfSecondOddNumbers[index]*=indexCorrection
+for index in range(0,len(listOfFirstOddNumbers),2):
+    emptyBucket=listOfFirstOddNumbers[index]
+    listOfFirstOddNumbers[index]=listOfSecondOddNumbers[index]
+    listOfSecondOddNumbers[index]=emptyBucket
+    emptyBucket=0
+
+firstSum=0
+secondSum=0
+
+for number in listOfFirstOddNumbers:
+    firstSum+=number
+
+for number in listOfSecondOddNumbers:
+    secondSum+=number
     
-for index in range(2,len(listOfFirstOddNumbers),2):
-    listOfFirstOddNumbers[index]=listOfFirstOddNumbers[index]//indexCorrection
-    listOfSecondOddNumbers[index]=listOfSecondOddNumbers[index]//indexCorrection
-    
-print(listOfFirstOddNumbers)
-print(listOfSecondOddNumbers)
+print(firstSum)
+print(secondSum)
