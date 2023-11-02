@@ -1,21 +1,17 @@
 startingNumber=int(input())
 finishingNumber=int(input())
 base=int(input())
-listOfNumbers=[]
-for number in range(startingNumber+1,finishingNumber):
-    listOfNumbers.append(number)
 
+listOfNumbers=[number for number in range(startingNumber+1,finishingNumber)]
 sumOfTheDigitsOfNumbers=[]
-    
-listOfDigits=[]
 
-for number in listOfNumbers:
+for number in range(startingNumber+1,finishingNumber):
     sumOfDigits=0
     while number!=1:
-        listOfDigits.append(number%base)
+        sumOfDigits+=(number%base)
         number//base
-    for digit in listOfDigits:
-        sumOfDigits+=digit
     sumOfTheDigitsOfNumbers.append(sumOfDigits)
 
+
+    
 print(listOfNumbers[sumOfTheDigitsOfNumbers.index(max(sumOfTheDigitsOfNumbers))])
