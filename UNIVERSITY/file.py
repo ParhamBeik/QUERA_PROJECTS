@@ -23,4 +23,4 @@ while startingNumber!=1:
         else:
             print(startingNumber)
         numberOfRounds+=1
-print(nameOfTotalPlayers[0])
+print(nameOfTotalPlayers[0]) 
