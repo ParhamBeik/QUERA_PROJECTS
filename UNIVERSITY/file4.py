@@ -6,9 +6,6 @@ listOfSecondOddNumbers=[]
 variable=10
 while variable<=firstNumber*10:
     listOfFirstOddNumbers.append(firstNumber%variable - firstNumber%(variable//10))
-    variable*=10
-variable=10
-while variable<=secondNumber*10:
     listOfSecondOddNumbers.append(secondNumber%variable - secondNumber%(variable//10))
     variable*=10
 
