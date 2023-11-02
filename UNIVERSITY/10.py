@@ -8,7 +8,7 @@ sumOfTheDigitsOfNumbers=[]
 listOfDigits=[]
 for number in range(startingNumber+1,finishingNumber):
     sumOfDigits=0
-    while number!=1:
+    while number!=0:
         listOfDigits.append(number%base)
         number=number//base
     for digit in listOfDigits:
