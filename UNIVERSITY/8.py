@@ -26,5 +26,8 @@ elif startingNumber%2==1 and finishingNumber%2==1:
         totalSumOdd*=2
     print(totalSumOdd-totalSumEven)
     
-elif (startingNumber%2==0 and finishingNumber%2==1) or (startingNumber%2==1 and finishingNumber%2==0):
+elif (startingNumber%2==0 and finishingNumber%2==1  and startingNumber!=0) or (startingNumber%2==1 and finishingNumber%2==0 and startingNumber!=0):
+    print(0)
+
+elif (finishingNumber%2==1  and startingNumber==0) or (finishingNumber%2==0 and startingNumber==0):
     print(0)
