@@ -37,8 +37,8 @@ int main() {
         secondSum += number;
     }
     
-    cout << firstSum << endl;
-    cout << secondSum << endl;
+    cout << firstSum <<"\t" ;
+    cout << secondSum ;
     
     return 0;
 }

@@ -26,5 +26,5 @@ for number in listOfFirstOddNumbers:
 for number in listOfSecondOddNumbers:
     secondSum+=number
     
-print(firstSum)
-print(secondSum)
+print(firstSum,end=" ")
+print(secondSum,end=" ")
