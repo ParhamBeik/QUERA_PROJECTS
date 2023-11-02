@@ -1,23 +1,11 @@
 startingNumber=int(input())
 finishingNumber=int(input())
-OddNumbers=[]
-EvenNumbers=[]
-for number in range(startingNumber,finishingNumber+1):
-    if number%2==0:
-        EvenNumbers.append(number)
-    else:
-        OddNumbers.append(number)
-        
-totalSum=1
-if len(OddNumbers)==len(EvenNumbers):
+
+if startingNumber%2==0 and finishingNumber%2==0:
+    totalSum=1
+    for _ in range((finishingNumber-startingNumber)//2):
+        totalSum*=2
+    print(totalSum)
+    
+elif (startingNumber%2==0 and finishingNumber%2==1) or (startingNumber%2==1 and finishingNumber%2==0):
     print(0)
-elif len(OddNumbers)>len(EvenNumbers):
-    difference=len(OddNumbers)-len(EvenNumbers)
-    for _ in range(difference):
-        totalSum*=2
-    print(totalSum)
-elif len(OddNumbers)<len(EvenNumbers):
-    difference=len(EvenNumbers)-len(OddNumbers)
-    for _ in range(difference):
-        totalSum*=2
-    print(totalSum)
