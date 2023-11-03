@@ -2,41 +2,42 @@
 #include <vector>
 using namespace std;
 int main() {
-    int startingNumber;
-    int finishingNumber;
-    int base;
+    long long int startingNumber;
+    long long int finishingNumber;
+    long long int base;
     cin >> startingNumber;
     cin >> finishingNumber;
     cin >> base;
 
     vector<int> listOfNumbers;
-    for (int number = startingNumber + 1; number < finishingNumber; number++) {
+    for (long long int number = startingNumber + 1; number < finishingNumber; number++) {
         listOfNumbers.push_back(number);
     }
 
     vector<int> sumOfTheDigitsOfNumbers;
     vector<int> listOfDigits;
-    for (int number = startingNumber + 1; number < finishingNumber; number++) {
-        int sumOfDigits = 0;
-        while (number != 0) {
+    for (long int number : listOfNumbers) {
+        long int sumOfDigits = 0;
+        while (number != 1) {
             listOfDigits.push_back(number % base);
-            number = number / base;
+            number /= base;
         }
-        for (int digit : listOfDigits) {
+        for (long int digit : listOfDigits) {
             sumOfDigits += digit;
         }
         sumOfTheDigitsOfNumbers.push_back(sumOfDigits);
-        listOfDigits.clear();
     }
 
-    int maxIndex = 0;
-    for (int i = 1; i < sumOfTheDigitsOfNumbers.size(); i++) {
+    long long int maxIndex = 0;
+    for (long int i = 1; i < sumOfTheDigitsOfNumbers.size(); i++) {
         if (sumOfTheDigitsOfNumbers[i] > sumOfTheDigitsOfNumbers[maxIndex]) {
             maxIndex = i;
         }
     }
 
     cout << listOfNumbers[maxIndex] << endl;
+
     return 0;
 }
+
 
