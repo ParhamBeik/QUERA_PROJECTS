@@ -34,7 +34,7 @@ int main() {
         cout << totalSumOdd - totalSumEven << endl;
     } else if ((startingNumber % 2 == 0 && finishingNumber % 2 == 1 && startingNumber != 0) || (startingNumber % 2 == 1 && finishingNumber % 2 == 0 && startingNumber != 0)) {
         cout << 0 << endl;
-    } else if ((finishingNumber % 2 == 1 && startingNumber == 0) || (finishingNumber % 2 == 0 && startingNumber == 0)) {
+    } else{
         cout << 0 << endl;
     }
     return 0;
