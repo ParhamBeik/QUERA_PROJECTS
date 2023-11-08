@@ -1,30 +1,21 @@
 #include <iostream>
-#include<cmath>
+#include <cmath>
 using namespace std;
 int main() {
-    int startingNumber,finishingNumber;
-
-    cin >> startingNumber;
-    cin >> finishingNumber;
-
-    int exponantial=(finishingNumber-startingNumber)/2;
-
-    long long int totalSum = 1;
-    if(startingNumber!=finishingNumber){
-        if ((startingNumber % 2 == 0 && finishingNumber % 2 != 0) || (startingNumber % 2 != 0 && finishingNumber % 2 == 0)) {
-            cout << 0 ;
-        } else if (startingNumber % 2 == 0 && finishingNumber % 2 == 0) {
-            totalSum=pow(2,exponantial);
-        } else if (startingNumber % 2 != 0 && finishingNumber % 2 != 0) {
-            totalSum=pow(2,exponantial);
-        }
-        if (totalSum != 1) {
-            cout << totalSum ;
-        }
-    }
-    else{
-        cout<<1;
+    long long int startingNumber,finishingNumber;
+    cin >> startingNumber ;
+    cin >> finishingNumber ;
+    long long int totalSum=2;
+    long long int lengthOfNumbers = (finishingNumber - startingNumber);
+    long long int exponential=lengthOfNumbers/2;
+    if (lengthOfNumbers % 2 == 0) {
+        totalSum = pow(totalSum, exponential);
+        cout << totalSum ;
+    } 
+	else{
+        cout << 0 ;
     }
     return 0;
 }
+
 
