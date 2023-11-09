@@ -13,8 +13,14 @@ int main(){
 	if(delta>0){
 		answer1=double(minusB+squareRootOfDelta)/double(2*a);
 		answer2=double(minusB-squareRootOfDelta)/double(2*a);
+		if(answer1>answer2){
 		listOfAnswersForTheEquation.push_back(answer1);
 		listOfAnswersForTheEquation.push_back(answer2);
+		}
+		else{
+		listOfAnswersForTheEquation.push_back(answer2);
+		listOfAnswersForTheEquation.push_back(answer1);
+		}
 		cout<<"there are 2 roots"<<endl;
 	}
 	else if(delta<0){

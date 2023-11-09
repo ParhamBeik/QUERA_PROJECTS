@@ -3,48 +3,45 @@
 #include<cmath>
 using namespace std;
 int main(){
-	int firstNumber,secondNumber,sqrtFirstNumber,sqrtSecondNumber,thirdOfFirstNumber,thirdOfSecondNumber;
+	long long int firstNumber,secondNumber;
 	string name;
 	cin>>name>>firstNumber>>secondNumber;
 	
-	sqrtFirstNumber=sqrt(firstNumber);
-	sqrtSecondNumber=sqrt(secondNumber);
-	
-	thirdOfFirstNumber=cbrt(firstNumber);
-	thirdOfSecondNumber=cbrt(secondNumber);
-	
-	vector<string> nameOfOpperation;
-	vector<int> listOfSquares;
 	vector<int> listOfCubics;
+	vector<int> listOfSquared;
 	
-	nameOfOpperation.push_back("square");
-	nameOfOpperation.push_back("cubic");
-	
-	if(name==nameOfOpperation[0]){
-		for(int i=sqrtFirstNumber+1;i<=sqrtSecondNumber;i++){
-			listOfSquares.push_back(i*i);
-		}
-		for(int i=0;i<=listOfSquares.size();i++){
-			if(firstNumber<listOfSquares[i]<secondNumber){
-				cout<<listOfSquares[i]<<" ";
+	if(name=="cubic"){
+		for(int x=1;x<secondNumber+1;x++){
+			int xCubiced=pow(x,3);
+			if(firstNumber<xCubiced && xCubiced<secondNumber){
+				listOfCubics.push_back(xCubiced);
 			}
-			else{
-				cout<<"None";
+		}
+		if(listOfCubics.size()==0){
+			cout<<"None";
+		}
+		else{
+			for(int i=0;i<listOfCubics.size();i++){
+				cout<<listOfCubics[i]<<" ";
 			}
 		}
 	}
 	else{
-		for(int i=thirdOfFirstNumber+1;i<=thirdOfSecondNumber;i++){
-			listOfCubics.push_back(i*i*i);
+		for(int x=1;x<secondNumber+1;x++){
+			int xSquared=pow(x,2);
+			if(firstNumber<xSquared && xSquared<secondNumber){
+				listOfSquared.push_back(xSquared);
+			}
 		}
-		for(int i=0;i<=listOfCubics.size();i++){
-			if(firstNumber<listOfSquares[i]<secondNumber){
-				cout<<listOfCubics[i]<<" ";
+		if(listOfSquared.size()!=0){
+			for(int i=0;i<listOfSquared.size();i++){
+				cout<<listOfSquared[i]<<" ";
 			}
-			else{
-				cout<<"None";
-			}
+		}
+		else{
+			cout<<"None";
 		}
 	}
+	
 	return 0;
 }
