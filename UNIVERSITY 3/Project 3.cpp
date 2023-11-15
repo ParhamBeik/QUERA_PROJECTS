@@ -1,9 +1,18 @@
 #include <iostream>
+#include<sstream>
 #include <string>
 using namespace std;
-
-void ReverseFiboNumbers(string number){
-
+void ReverseFiboNumbers(int number){
+    stringstream ss;
+    ss<<number;
+    string StringOfNum;
+    ss>>StringOfNum;
+    int lenght=StringOfNum.length();
+    for(int i=0;i<lenght/2;i++){
+        swap(StringOfNum[i],StringOfNum[lenght-i-1]);
+    }
+    int IntOfNumber=stoi(StringOfNum);
+    cout<<IntOfNumber<<" ";
 }
 
 void MakingPrimeNumbers(int numberOfRounds) {
