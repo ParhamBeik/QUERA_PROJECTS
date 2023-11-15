@@ -1,22 +1,29 @@
 #include<iostream>
 using namespace std;
 
-void primeNumbers(int number){
-	int count=0;
-	for(int i=2;i<=number;i++){
-		for(int x=2;x<=i;x++)
+void primeNumbers(int firstNum,int secondNum){
+	int total=0;
+	cout<<"nums: ";
+	for(int i=firstNum;i<=secondNum;i++){
+		int count=0;
+		for(int x=2;x<secondNum;x++)
 			if(i%x==0 && i!=x){
 				count++;
 			}
 		if(count==0){
-			cout<<i;
+			if(i!=1){
+				cout<<i<<" ";
+				total+=i;
+			}
 		}
 	}
+	cout<<endl<<"sum: "<<total;
+
 }
 
 int main(){
-	int number;
-	cin>>number;
-	primeNumbers(number);
+	int firstNumber,secondNumber;
+	cin>>firstNumber>>secondNumber;
+	primeNumbers(firstNumber,secondNumber);
     return 0;
 }
