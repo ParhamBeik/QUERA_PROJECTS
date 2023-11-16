@@ -2,8 +2,7 @@
 #include<cmath>
 #include<string>
 using namespace std;
-// int F(){}
-// int G(){}
+
 int HexaToDecimal(string number){
     int sum=0,lengthOfString=number.size();
     for(int i=0;i<number.size();i++){
@@ -61,6 +60,7 @@ int HexaToDecimal(string number){
     }
     return sum;
 }
+
 string DecimalToHexa(int number){
     int copyOfNum=number;
     string num="";
@@ -124,9 +124,20 @@ string DecimalToHexa(int number){
     return num;
 }
 
+int F(int number){
+    return ceil(cbrt(pow(number,2))-log2(abs(number))+sin(cosh(cbrt(number)))+exp(atan(number)));
+}
+
+int G(int number){
+    return floor(pow(pow(F(number*number),3),1.0/4)+(1/number+10));
+}
+
 int main(){
-    int number;
+    string number,Fnumber,Gnumber;
     cin>>number;
-    cout<<DecimalToHexa(number);
+    int number2=HexaToDecimal(number);
+    Fnumber=DecimalToHexa(F(number2));
+    Gnumber=DecimalToHexa(G(number2));
+    cout<<Fnumber<<endl<<Gnumber;
     return 0;
 }
