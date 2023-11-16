@@ -2,27 +2,15 @@
 #include<math.h>
 using namespace std;
 
-int Tavan(int n){
+int Tavan(long long int n){
     long long int numPow=pow(2,n);
     return numPow+1;
 }
 
 bool isPrime(long long int number){
-    int count=0;
-    for(long long int i=2;i<number;i++){
-        if(number%i==0){
-            count++;
-        }
-    }
-    if(count==0 && number!=1){
-        return true;
-    }
-    else{
-        return false;
-    }
 }
 
-int TheResault(int n){
+int TheResault(long long int n){
     long long int number=Tavan(n),numberOfPrimeMaghsoom=0;
     for(long long int i=2;i<=number;i++){
         if(number%i==0 && isPrime(i)){
@@ -31,7 +19,7 @@ int TheResault(int n){
     }
     while(numberOfPrimeMaghsoom%3!=0){
         numberOfPrimeMaghsoom=0;
-        for(int i=2;i<=number;i++){
+        for(long long int i=2;i<=number;i++){
             if(number%i==0 && isPrime(i)){
                 numberOfPrimeMaghsoom++;
             }
