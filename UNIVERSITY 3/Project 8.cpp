@@ -129,7 +129,7 @@ int F(int number){
 }
 
 int G(int number){
-    return floor(pow(pow(F(number*number),3),1.0/4)+(1/number+10));
+    return floor(pow(pow(F(number*number),3),1.0/4)+(1/(number+10)));
 }
 
 int main(){

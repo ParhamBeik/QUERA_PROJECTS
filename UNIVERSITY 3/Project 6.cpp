@@ -1,6 +1,5 @@
 #include<iostream>
-#include<cmath>
-#include<vector>
+#include<math.h>
 using namespace std;
 
 int Tavan(int n){
@@ -24,21 +23,20 @@ bool isPrime(long long int number){
 }
 
 int TheResault(int n){
-    long long int number=Tavan(n);
-    vector<int> listOfPrimeMaghsoom;
+    long long int number=Tavan(n),numberOfPrimeMaghsoom=0;
     for(long long int i=2;i<=number;i++){
         if(number%i==0 && isPrime(i)){
-            listOfPrimeMaghsoom.push_back(i);
+            numberOfPrimeMaghsoom++;
         }
     }
-    while(listOfPrimeMaghsoom.size()%3!=0){
-        listOfPrimeMaghsoom.clear();
+    while(numberOfPrimeMaghsoom%3!=0){
+        numberOfPrimeMaghsoom=0;
         for(int i=2;i<=number;i++){
             if(number%i==0 && isPrime(i)){
-                listOfPrimeMaghsoom.push_back(i);
+                numberOfPrimeMaghsoom++;
             }
         }
-        if(listOfPrimeMaghsoom.size()%3==0){
+        if(numberOfPrimeMaghsoom%3==0){
             return number;
         }
         else{
