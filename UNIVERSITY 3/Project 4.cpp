@@ -3,7 +3,7 @@ using namespace std;
 
 int KMM(int first,int second){
     int kmm=1,copyOfSecond=second;
-    for(int x=2;x<copyOfSecond;x++){
+    for(int x=2;x<=copyOfSecond;x++){
         while(second%x==0 && first%x==0){
             kmm*=x;
             second/=x;
