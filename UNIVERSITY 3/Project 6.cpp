@@ -8,9 +8,9 @@ int Tavan(int n){
 }
 
 bool isPrime(long long int number){
-    int count=0;
-    for(long long int i=2;i<number;i++){
-        if(number%i==0){
+    int count=0,copyOfNum=number;   
+    for(long long int i=2;i<sqrt(number);i++){
+        if(copyOfNum%i==0){
             count++;
         }
     }
