@@ -6,34 +6,32 @@ int main(){
     long long int rounds;
     cin>>rounds;
     vector<int> listOfNums;
+
     for(int i=0;i<rounds;i++){
         int num;
         cin>>num;
         listOfNums.push_back(num);
     }
+
     vector<int> listOfSurfaces;
-    for(int x=0;x<listOfNums.size();x++){
-        long long int element=listOfNums[x],count=0,surface=0;
-        for(int y=0;y<listOfNums.size();){
-            while(listOfNums[y]>=element){
-                y++;
-                count++;
-                break;
-            }
+    int vectorSize=listOfNums.size();
+
+    for(int i=0;i<vectorSize;i++){
+        int place , forwardPlace , backwardPlace , side , surface ;
+        place=i;
+        forwardPlace=i;
+        backwardPlace=i;
+        side=-1;
+        surface=0;
+        while(listOfNums[place]<=listOfNums[forwardPlace] && forwardPlace<vectorSize){
+            side++;
+            forwardPlace++;
         }
-        surface=count*element;
-        listOfSurfaces.push_back(surface);
-    }
-    for(int x=listOfNums.size()-1;x<-1;x--){
-        long long int element=listOfNums[x],count=0,surface=0;
-        for(int y=listOfNums.size()-1;y<-1;){
-            while(listOfNums[y]>=element){
-                y--;
-                count++;
-                break;
-            }
+        while(listOfNums[place]<=listOfNums[backwardPlace] && backwardPlace>=0){
+            side++;
+            backwardPlace--;
         }
-        surface=count*element;
+        surface=side*listOfNums[place];
         listOfSurfaces.push_back(surface);
     }
     
