@@ -3,7 +3,7 @@
 #include<algorithm>
 using namespace std;
 int main(){
-    int rounds;
+    long long int rounds;
     cin>>rounds;
     vector<int> listOfNums;
     for(int i=0;i<rounds;i++){
@@ -11,13 +11,26 @@ int main(){
         cin>>num;
         listOfNums.push_back(num);
     }
-    sort(listOfNums.begin(), listOfNums.end());
     vector<int> listOfSurfaces;
     for(int x=0;x<listOfNums.size();x++){
-        int element=listOfNums[x],count=0,surface=0;
-        for(int y=0;y<listOfNums.size();y++){
-            if(listOfNums[y]>=element){
+        long long int element=listOfNums[x],count=0,surface=0;
+        for(int y=0;y<listOfNums.size();){
+            while(listOfNums[y]>=element){
+                y++;
                 count++;
+                break;
+            }
+        }
+        surface=count*element;
+        listOfSurfaces.push_back(surface);
+    }
+    for(int x=listOfNums.size()-1;x<-1;x--){
+        long long int element=listOfNums[x],count=0,surface=0;
+        for(int y=listOfNums.size()-1;y<-1;){
+            while(listOfNums[y]>=element){
+                y--;
+                count++;
+                break;
             }
         }
         surface=count*element;
