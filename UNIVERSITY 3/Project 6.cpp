@@ -30,10 +30,14 @@ int Resault(int n){
     int number=Tavan(n);
     int copyOfNumber=number,PrimeFactorCount=0,index=2;
     while(copyOfNumber!=1){
+        int a=0;
         while(copyOfNumber%index==0){
             copyOfNumber=copyOfNumber/index;
+            a++;
         }
-        PrimeFactorCount++;
+        if(a>0){
+            PrimeFactorCount++;
+        }
         index++;
     }
     if(PrimeFactorCount%3==0){
@@ -44,10 +48,14 @@ int Resault(int n){
             number++;
             copyOfNumber=number,PrimeFactorCount=0,index=2;
             while(copyOfNumber!=1){
+                int a=0;
                 while(copyOfNumber%index==0){
                     copyOfNumber=copyOfNumber/index;
+                    a++;
                 }
-                PrimeFactorCount++;
+                if(a>0){
+                    PrimeFactorCount++;
+                }
                 index++;
             }
         }
