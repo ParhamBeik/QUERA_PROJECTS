@@ -7,6 +7,8 @@ int HexaToDecimal(string number){
     int sum=0,lengthOfString=number.size();
     for(int i=0;i<number.size();i++){
         switch(number[i]){
+            case 45:
+                break;
             case 48:
                 sum+=0*pow(16,lengthOfString-1);
                 break;
@@ -57,6 +59,9 @@ int HexaToDecimal(string number){
                 break;
         }
         lengthOfString--;
+    }
+    if(number[0]==45){
+        sum*=(-1);
     }
     return sum;
 }
