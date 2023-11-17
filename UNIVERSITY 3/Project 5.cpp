@@ -18,34 +18,42 @@ int main(){
     int number;
     double radius,length,width,height;
     do{
+        cin>>number;
+        switch(number){
+            case (1):
+                cin>>radius;
+                break;
+            case (2):
+                cin>>radius>>length>>width>>height;
+                break;
+            case (3):
+                cin>>radius,height;
+                break;        
+        }
         cout<<"Choose a shape to calculate the volume:"<<endl;
         cout<<"1. Sphere"<<endl;
         cout<<"2. Rectangular Prism"<<endl;
         cout<<"3. Cylinder"<<endl;
         cout<<"4. Exit"<<endl;
         cout<<"Enter your choice (1/2/3/4): "<<endl;
-        cin>>number;
+        cout<<number<<endl;
         switch(number){
             case (1):
-                cin>>radius;
-                cout<<endl<<"Volume of the sphere:"<<"\t"<<CalculateVolume(radius)<<endl;
+                cout<<"Volume of the sphere:"<<" "<<CalculateVolume(radius)<<endl;
                 break;
             case (2):
-                cin>>radius>>length>>width>>height;
-                cout<<endl<<"Volume of the rectangular prism:"<<"\t"<<CalculateVolume(length,width,height)<<endl;
+                cout<<"Volume of the rectangular prism:"<<" "<<CalculateVolume(length,width,height)<<endl;
                 break;
             case (3):
-                cin>>radius,height;
-                cout<<endl<<"Volume of the cylinder:"<<"\t"<<CalculateVolume(radius,height)<<endl;
+                cout<<"Volume of the cylinder:"<<" "<<CalculateVolume(radius,height)<<endl;
                 break;       
             case (4):
-                cout<<endl<<"Exiting the program.";
+                cout<<"Exiting the program.";
                 exit(0);
             default:
-                cout<<endl<<"Invalid choice. Please enter 1, 2, 3, or 4."<<endl; 
+                cout<<"Invalid choice. Please enter 1, 2, 3, or 4."<<endl; 
         }
     }
     while(number!=4);
     return 0;
 }
-
