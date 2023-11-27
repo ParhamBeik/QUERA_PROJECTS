@@ -13,8 +13,8 @@ int main(){
 	else{
 		bucket=bucket-1;
 		firstNum=pow(bucket,3);
-		secondNum=pow(bucket+1,3);
-		cout<<firstNum<<" "<<secondNum;
+		secondNum=pow(bucket+2,3);
+		cout<<firstNum<<endl<<secondNum;
 	}
 		
 	return 0;

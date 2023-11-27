@@ -14,7 +14,7 @@ int main(){
 		cout<<"- kieh!!!";
 	}
 	else{
-		cout<<"Eh "<<newName<<" toee!";
+		cout<<"- Eh "<<newName<<" toee!";
 	}
 	return 0;
 }
