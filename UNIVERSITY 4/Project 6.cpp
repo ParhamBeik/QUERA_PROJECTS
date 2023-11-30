@@ -17,22 +17,6 @@ int main(){
 		cout<<endl;
 	}
 	
-//	step=num-2,number=num-1;
-//	index=num-1;
-//	for(int i=1;i<=num;i++){
-//		for(int j=1;j<=num*(num+1);j++){
-//			if((j==(index+step)) || (j==(index-step))){
-//				cout<<number;
-//			}
-//			else{
-//				cout<<" ";
-//			}
-//		}
-//		number--;
-//		step--;
-//		cout<<endl;
-//
-//	}
-//	
+
 	return 0;
 }
