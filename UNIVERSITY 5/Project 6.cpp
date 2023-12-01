@@ -22,12 +22,8 @@ int main(){
 	//putting all the heights together or in a sense sticking to ladder together
 	sort(list.begin(), list.end());
 	//assigning the high and low of the the two ladders
-	double high=0,low=0;
+	double high=0,low=10000;
 	for(int i=0;i<first+second-1;i++){
-		if(i==0){
-			high=list[i+1]-list[i];
-			low=high;
-		}
 		if( (list[i+1]-list[i]) > high){
 			high=list[i+1]-list[i];
 		}
@@ -36,6 +32,11 @@ int main(){
 		}
 	}
 	//printing the low and the high differenciation of the ladders
-	cout<<low<<" "<<high;
+	if(first==1 && second==1 && list[0]==list[1]){
+		cout<<0<<" "<<0;
+	}
+	else{
+		cout<<low<<" "<<high;
+	}
 	return 0;
 }
