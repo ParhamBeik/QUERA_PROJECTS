@@ -1,30 +1,37 @@
 #include<iostream>
+#include<iomanip>
 using namespace std;
 int main(){
 	int n;
 	cin>>n;
-	int a[n],b[n];
+	double a[n],b[n];
 	double c[n];
+	
 	for(int i=0;i<n;i++){
-		int number;
+		double number;
 		cin>>number;
 		a[i]=number;
 	}
 	for(int i=0;i<n;i++){
-		int number;
+		double number;
 		cin>>number;
 		b[i]=number;
 	}
-	for(int j=0;j<n;j++){
-		int total=0,index=n-1;
-		for(int i=0;i<=j;i++){
-			total+=a[i]*b[index];
+	
+	for(int i=0;i<n;i++){
+		double total=0;
+		int index=i;
+		for(int j=0;j<=i;j++){
+			total+=a[j]*b[index];
 			index--;
 		}
-		c[j]=total;
+		c[i]=total;
 	}
+	cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(4);
 	for(int i=0;i<n;i++){
-		cout<<c[i]<<endl;
+		cout<<c[i]<<" ";
 	}
 	return 0;
 }

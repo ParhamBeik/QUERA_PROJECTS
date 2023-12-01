@@ -11,25 +11,32 @@ int main(){
 		total+=number;
 		listOfDays.push_back(number);
 	}
-	int middle=(total+1)/2,month=0,day=0;
+	int middle=(total+1)/2,month=1,day=0;
 	
 	int sum=0;
+	int index=1;
 	
-	for(int i=0;i<n;i++){
-		if(sum!=middle){
-			day=0;
+	while(sum!=middle){
+		sum++;
+
+		int sumOfDays=0;
+		for(int i=0;i<=index-1;i++){
+			sumOfDays+=listOfDays[i];
 		}
-		for(int j=0;j<listOfDays[i];j++){
-			sum++;
-			if(sum!=middle){
-				day++;
-			}
+		
+		int sumOfLessDays=0;
+		for(int i=0;i<index-1;i++){
+			sumOfLessDays+=listOfDays[i];
 		}
-		if(sum!=middle){
+		
+		
+		day=sum-sumOfLessDays;
+		
+		if(sum>sumOfDays){
 			month++;
+			index++;
 		}
 	}
-	
 	cout<<month<<" "<<day;
 	return 0;
 }

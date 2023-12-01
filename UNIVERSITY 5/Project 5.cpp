@@ -42,7 +42,10 @@ int main(){
 	cout<<"max : "<<high<<endl;
 	cout<<"min : "<<low<<endl;
 	cout<<"sum : "<<total<<endl;
-	cout<<setprecision(3)<<"avg : "<<average<<endl;
+	cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(2);
+	cout<<"avg : "<<average<<endl;
 	cout<<"reverse : ";
 	for(int i=0;i<count;i++){
 		cout<<reverseList[i]<<" ";
