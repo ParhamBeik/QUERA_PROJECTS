@@ -23,7 +23,7 @@ int main(){
 	for(int i=0;i<first+second-1;i++){
 		if(i==0){
 			high=list[i+1]-list[i];
-			low=list[i+1]-list[i];
+			low=high;
 		}
 		if( (list[i+1]-list[i]) > high){
 			high=list[i+1]-list[i];
