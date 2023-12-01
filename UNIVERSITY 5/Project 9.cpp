@@ -8,16 +8,21 @@ int main(){
 		list[i]=i+1;
 	}
 	
-	int index=1;
+	int index=0,step=1;
 	for(int i=0;i<n-1;i++){
-		if(list[index%n]!=0){
-			if((index%n)%2==1){
-				list[index%n]=0;
+		if(list[step%n]!=0){
+			if((index)%2==0){
+				list[step%n]=0;
 				index++;
+				step++;
 			}
 			else{
 				index++;
+				step++;
 			}
+		}
+		else{
+			step++;
 		}
 	}
 	for(int i=0;i<n;i++){
