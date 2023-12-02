@@ -19,15 +19,12 @@ int main(){
 				cin>>b[i][j];
 			}
 		}
-		for(int x=0;x<n1;x++){
-			for(int y=0;y<m2;y++){
-				for(int i=0;i<n2;i++){
-					int total=0;
-					for(int j=0;j<m1;j++){
-						total+=a[i][j]*b[j][i];
-					}
-					c[x][y]=total;
+		for(int i=0;i<n1;i++){
+			for(int j=0;j<m2;j++){
+				for(int z=0;z<n2;z++){
+					c[i][j]+=(a[i][z]*b[z][j]);
 				}
+				
 			}
 		}
 		for(int i=0;i<n2;i++){
