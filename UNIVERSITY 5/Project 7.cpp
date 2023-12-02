@@ -1,5 +1,4 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 int main(){
 	int n1,n2,m1,m2;
