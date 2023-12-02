@@ -4,7 +4,9 @@ using namespace std;
 int main(){
 	int n1,n2,m1,m2;
 	cin>>n1>>n2>>m1>>m2;
-	int a[n1][n2],b[m1][m2],c[n1][m2];
+	int a[n1][n2];
+	int b[m1][m2];
+	int c[n1][m2];
 	if(n2!=m1){
 		cout<<"Infeasible";
 	}
