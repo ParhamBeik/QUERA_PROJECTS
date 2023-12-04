@@ -7,7 +7,7 @@ int main(){
     for(int i=0;i<round;i++){
         int n;
         cin>>n;
-        double a[n][n],aT[n][n],res1[n][n],res2[n][n];
+        double a[n][n],aT[n][n],res1[n][n]={},res2[n][n]={};
         //initializing each matrix
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
@@ -39,7 +39,7 @@ int main(){
                 if(i==j && res1[i][j]!=1){
                     isTrue=false;
                 }
-                else if(i!=j && res1[i][j]!=0){
+                if(i!=j && res1[i][j]!=0){
                     isTrue=false;
                 }
             }
@@ -49,7 +49,7 @@ int main(){
                 if(i==j && res2[i][j]!=1){
                     isTrue=false;
                 }
-                else if(i!=j && res2[i][j]!=0){
+                if(i!=j && res2[i][j]!=0){
                     isTrue=false;
                 }
             }
