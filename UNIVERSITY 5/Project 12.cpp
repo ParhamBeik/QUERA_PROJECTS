@@ -7,6 +7,6 @@ int main(){
         cin>>number;
         a[i]=number;
     }
-    
+    cout<<"Lost!";
     return 0;
 }
