@@ -11,8 +11,8 @@ int main(){
     }
     char res="S";
     int count=0;
+    int i=0,j=0;
     while(res!="E"){
-        int i=0,j=0;
         if(j+1>0 && j+1<5 && a[i][j+1]=="."){
             res=a[i][j+1];
             count++;
@@ -39,6 +39,7 @@ int main(){
         }
         else if(a[i][j]=="."){
             cout<<"Lost!";
+            break;
         }
     }
     return 0;
