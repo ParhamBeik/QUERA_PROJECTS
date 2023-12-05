@@ -20,7 +20,7 @@ int main(){
 
     while(res!="E"){
         //going forward
-        isTrue1=true;
+        bool isTrue1=true;
         for(int a=0;a<list.size();a++){
             if(a%2==0 && list[a]==i && list[a+1]==j){
                 isTrue1=false;
@@ -43,12 +43,6 @@ int main(){
             break;
         }
         //going downward
-        isTrue1=true;
-        for(int a=0;a<list.size();a++){
-            if(a%2==0 && list[a]==i && list[a+1]==j){
-                isTrue1=false;
-            }
-        }
         else if(i-1>0 && i-1<5 && a[i-1][j]=="." && isTrue1){
             res=a[i-1][j];
             count++;
@@ -66,13 +60,6 @@ int main(){
             break;
         }
         //going leftwards
-        isTrue1=true;
-        for(int a=0;a<list.size();a++){
-            if(a%2==0 && list[a]==i && list[a+1]==j){
-                isTrue1=false;
-            }
-        }
-    
         else if(j-1>0 && j-1<5 && a[i][j-1]=="." && isTrue1){
             res=a[i][j-1];
             count++;
@@ -90,12 +77,6 @@ int main(){
             break;
         }
         //going upwards
-        isTrue1=true;
-        for(int a=0;a<list.size();a++){
-            if(a%2==0 && list[a]==i && list[a+1]==j){
-                isTrue1=false;
-            }
-        }
         else if(i+1>0 && i+1<5 && a[i+1][j]=="." && isTrue1){
             res=a[i+1][j];
             count++;
