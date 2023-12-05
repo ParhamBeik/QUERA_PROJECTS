@@ -5,7 +5,7 @@ using namespace std;
 int main(){
     int num;
     cin>>num;
-
+    //making the sequence of numbers for the star lines between each shape
     int number=2;
     vector<int> list;
     while(number<=num){
@@ -21,16 +21,17 @@ int main(){
         number--;
         i++;
     }
-
+    //making the shape for one
     if(num==1){   
         cout<<"*"<<endl<<"* *"<<endl<<"  *";
     }
+    //making the shape for the rest
     else{   
         cout<<"*"<<endl<<"* *"<<endl<<"  *"<<endl;
 
-        int number=1,index=0,copyNum=num;
+        int number=1,index=0;
         for(int i=0;i<(num-1)*2-1;i++){
-        	
+        	//printing the lines
         	int a=0;
             for(int y=0;y<list[index];y++){
                 if(index<=num/2){
@@ -48,7 +49,7 @@ int main(){
             }
             
             cout<<endl;
-
+            //printing out the rest of the shapes after the first one and the lines
             for(int j=0;j<4*number;j++){
                 cout<<" ";
             }
