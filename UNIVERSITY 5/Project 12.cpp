@@ -1,5 +1,4 @@
 #include<iostream>
-#include<vector>
 #include<string>
 using namespace std;
 int main(){
@@ -12,83 +11,59 @@ int main(){
         }
     }
 
-    vector<int> list;
-
     string res="S";
     int count=0;
     int i=0,j=0;
 
     while(res!="E"){
         //going forward
-        bool isTrue1=true;
-        for(int a=0;a<list.size();a++){
-            if(a%2==0 && list[a]==i && list[a+1]==j){
-                isTrue1=false;
-            }
-        }
-        if(j+1>0 && j+1<5 && a[i][j+1]=="." && isTrue1){
+        if(j+1>0 && j+1<5 && a[i][j+1]=="."){
             res=a[i][j+1];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             j++;
         }
-        else if(j+1>0 && j+1<5 && a[i][j+1]=="E" && isTrue1){
+        else if(j+1>0 && j+1<5 && a[i][j+1]=="E"){
             res=a[i][j+1];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             j++;
             cout<<count;
             break;
         }
         //going downward
-        else if(i-1>0 && i-1<5 && a[i-1][j]=="." && isTrue1){
+        else if(i-1>0 && i-1<5 && a[i-1][j]=="."){
             res=a[i-1][j];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             i--;
         }
-        else if(i-1>0 && i-1<5 && a[i-1][j]=="E" && isTrue1){
+        else if(i-1>0 && i-1<5 && a[i-1][j]=="E"){
             res=a[i-1][j];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             i--;
             cout<<count;
             break;
         }
         //going leftwards
-        else if(j-1>0 && j-1<5 && a[i][j-1]=="." && isTrue1){
+        else if(j-1>0 && j-1<5 && a[i][j-1]=="."){
             res=a[i][j-1];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             j--;
         }
-        else if(j-1>0 && j-1<5 && a[i][j-1]=="E" && isTrue1){
+        else if(j-1>0 && j-1<5 && a[i][j-1]=="E"){
             res=a[i][j-1];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             j--;
             cout<<count;
             break;
         }
         //going upwards
-        else if(i+1>0 && i+1<5 && a[i+1][j]=="." && isTrue1){
+        else if(i+1>0 && i+1<5 && a[i+1][j]=="."){
             res=a[i+1][j];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             i++;
         }
-        else if(i+1>0 && i+1<5 && a[i+1][j]=="E" && isTrue1){
+        else if(i+1>0 && i+1<5 && a[i+1][j]=="E"){
             res=a[i+1][j];
             count++;
-            list.push_back(i);
-            list.push_back(j);
             i++;
             cout<<count;
             break;
