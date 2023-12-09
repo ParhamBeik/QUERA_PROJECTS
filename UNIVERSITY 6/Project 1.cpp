@@ -4,21 +4,17 @@ using namespace std;
 int main(){
     string str1,str2;
     cin >> str1 >> str2;
-    int i=0;
+    int size=str1.size();
+    
     bool isSame=true;
-    while(isSame){
-        if( (str2[i]==str1[i]-32 || str1[i]==str2[i]-32 || str1[i]==str2[i]) && i<str1.size()){
-            continue;
-        }
-        else if(i==str1.size()-1){
-            break;
-        }
-        else{
-            isSame=false;
-            break;
-        }
-        i++;
-    }
+    for(int i=0;i<size;i++){
+    	if(str2[i]==str1[i]-32 || str1[i]==str2[i]-32){
+    		continue;
+		}
+		else{
+			isSame=false;
+		}
+	}
     if(isSame){
         cout << "YES";
     }
