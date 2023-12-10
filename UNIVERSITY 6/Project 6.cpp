@@ -1,99 +1,77 @@
 #include<iostream>
+#include<string>
+#include<sstream>
 using namespace std;
 int main(){
-    int count[26];
-    for(int i=0;i<26;i++){
-        count[i]=0;
-    }
+    int round;
+    cin>>round;
+    
+    bool isTrue[round];
+    for(int i=0;i<round;i++){
+    	isTrue[i]=false;
+	}
+	
+    for(int i=0;i<round;i++){
+        string str;
+        cin>>str;
+        string first="";
+        string second="";
+        string res="";
+        int index=0;
+        while(str[index]!=42 || str[index]!=43 || str[index]!=45 || str[index]!=47){
+            first+=str[index];
+            index++;
+        }
+        string operate="";
+        operate+=str[index];
+        
+        index++;
+        while(str[index]!=61){
+            second+=str[index];
+            index++;
+        }
+        index++;
+        while(index < str.size()){
+            res+=str[index];
+        }
+        int firstNum,secondNum,resault,test=0;
 
-    string str;
-    cin>>str;
+        stringstream ss;
+        ss << first;
+        ss >> firstNum;
+        
+        ss << second;
+        ss >> secondNum;
 
-    for(int i=0;i<str.size();i++){
-        switch(str[i]){
-            case 65:
-                count[0]++;
-                break;
-            case 66:
-                count[1]++;
-                break;
-            case 67:
-                count[2]++;
-                break;
-            case 68:
-                count[3]++;
-                break;
-            case 69:
-                count[4]++;
-                break;
-            case 70:
-                count[5]++;
-                break;
-            case 71:
-                count[6]++;
-                break;
-            case 72:
-                count[7]++;
-                break;
-            case 73:
-                count[8]++;
-                break;
-            case 74:
-                count[9]++;
-                break;
-            case 75:
-                count[10]++;
-                break;
-            case 76:
-                count[11]++;
-                break;
-            case 77:
-                count[12]++;
-                break;
-            case 78:
-                count[13]++;
-                break;
-            case 79:
-                count[14]++;
-                break;
-            case 80:
-                count[15]++;
-                break;
-            case 81:
-                count[16]++;
-                break;
-            case 82:
-                count[17]++;
-                break;
-            case 83:
-                count[18]++;
-                break;
-            case 84:
-                count[19]++;
-                break;
-            case 85:
-                count[20]++;
-                break;
-            case 86:
-                count[21]++;
-                break;
-            case 87:
-                count[22]++;
-                break;
-            case 88:
-                count[23]++;
-                break;
-            case 89:
-                count[24]++;
-                break;
-            case 90:
-                count[25]++;
-                break;
+        ss << res;
+        ss >> resault;
+
+        if(operate=="*"){
+            test=firstNum*secondNum;
+        }
+        else if(operate=="+"){
+            test=firstNum+secondNum;
+        }
+        else if(operate=="-"){
+            test=firstNum-secondNum;
+        }
+        else if(operate=="/"){
+            test=firstNum/secondNum;
+        }
+        
+        if(test==resault){
+            isTrue[i]==true;
         }
     }
+	
+	for(int i=0;i<round;i++){
+		if(isTrue[i]){
+			cout<<"True"<<endl;
+		}
+		else{
+			cout<<"False"<<endl;
+		}
+	}
 
-    for(int i=0;i<26;i++){
-        cout<<count[i]<<" ";
-    }
     return 0;
 }
