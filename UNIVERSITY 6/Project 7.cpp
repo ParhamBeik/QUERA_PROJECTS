@@ -5,10 +5,12 @@ using namespace std;
 int main(){
     int round;
     cin>>round;
+    
     bool isTrue[round];
     for(int i=0;i<round;i++){
     	isTrue[i]=false;
 	}
+	
     for(int i=0;i<round;i++){
         string str;
         cin>>str;
