@@ -1,25 +1,30 @@
 #include<iostream>
+#include<vector>
 #include<string>
 using namespace std;
 int main(){
-    string table="",res="",str="";
-    do{
-        str.clear();
-        cin>>str;
-        for(int i=0;i<str.size();i++){
-            if(str[i]!=45 && str[i+1]!=49){
-                table+=str[i];
-            }
-        }
+    vector<string> listOfNum;
+    string element;
+	int index=0 , isTrue = 0;
+	while (isTrue<2)
+	{
+		cin>>element;
+		listOfNum.push_back(element);
+		if (element == "-1")
+			isTrue++;
+		else
+		    isTrue = 0;
+	}
 
-        for(int i=str.size()-1;i>-1;i--){
-            res+=table[i];
-        }
-        table+="\n";
-        res+="\n";
+	listOfNum.erase(listOfNum.end() - 2 , listOfNum.end());
 
-    }while(str.size()>2);
-
-    cout<<res;
+    for (int i = listOfNum.size()-1; i > -1 ; i--)
+	{
+		if(listOfNum[i] != "-1")
+		    cout<<listOfNum[i]<<" ";
+		else
+		    cout<<endl;
+	}
+	
     return 0;
 }

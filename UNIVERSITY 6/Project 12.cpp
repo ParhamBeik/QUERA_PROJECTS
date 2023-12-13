@@ -1,34 +1,25 @@
 #include<iostream>
 #include<string>
+#include<vector>
 #include<algorithm>
 using namespace std;
 int main(){
     int round;
     cin>>round;
-    string str[round] , test="",res="*";
+    vector<string> listOfName;
     for(int i=0;i<round;i++){
-        cin>>str[i];
+        string str;
+        cin>>str;
+        listOfName.push_back(str);
     }
+    string res="";
     for(int i=0;i<round;i++){
-        for(int j=0;j<str[i].size();j++){
-            test+=str[j];
-        }
-    }
-    sort(test.begin(), test.end());
-    int num=97;
-    for(int i=0;i<test.size();){
-        int count=0;
-        while(test[i]==num){
-            count++;
-            i++;
-            if(count==round){
-                res+=num;
-                num++;
-                break;
+        string str=listOfName[0][0];
+        for(j:listOfName[i+1]){
+            if(j==str){
+                str+=j;
             }
         }
-        i++;
     }
-    cout<<res;
     return 0;
 }
