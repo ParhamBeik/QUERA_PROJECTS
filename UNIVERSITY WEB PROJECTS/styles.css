@@ -1,4 +1,12 @@
+/* 
+PURPLE: #4F4CF0
+WHITE: #F9F9F9
+GRAY: #EFEFEF
+BLACK: #1c1c1c
+*/
 
+/* CSS RESET. DON'T TOUCH THIS */
+*,
 ::before,
 ::after {
 	box-sizing: border-box;
@@ -7,6 +15,7 @@
 	font-family: sans-serif;
 }
 
+/* Estilo iOS */
 .switch__container {
 	width: 90px;
 }
@@ -62,6 +71,7 @@
 	transform: translateX(55px);
 }
 
+/* ============================================================= */
 
 .container {
 	padding: 10px 20px;
@@ -75,7 +85,7 @@
 }
 .search-bar {
 	display: flex;
-	padding: 5px 15px;
+	padding: 10px 15px;
 	background-color: #EFEFEF;
 	border-radius: 20px;
 	justify-content: space-between;
@@ -92,6 +102,7 @@
 }
 .active-bar {
 	color: #504dfe;
+	/* position: relative; */
 }
 .Alarms {
 	margin: 20px 0;
@@ -107,7 +118,7 @@
 	justify-content: space-between;
 }
 .Alarm-text {
-	color: rgb(0, 0, 0.6);
+	color: rgba(0, 0, 0, 0.6);
 	padding-left: 10px;
 	margin-top: 5px;
 	word-spacing: 5px;
@@ -120,7 +131,8 @@
 	position: fixed;
 	bottom: 30px;
 	left: 155px;
-    box-shadow: 1px 25px 40px -5px rgba(78, 76, 240, 0.7);
+	box-shadow: 1px 25px 40px -5px rgba(78, 76, 240, 0.7);
+
 }
 .plus-button-circle {
 	padding: 24.5px;
