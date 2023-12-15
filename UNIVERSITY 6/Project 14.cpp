@@ -39,8 +39,9 @@ int main(){
     }
 	//making the different variations of the strings and checking if they are valid or not
     for(int i=0;i<round-1;i++){
+		string test="";
         for(int j=i+1;j<round;j++){
-            string test=paranthesis[i]+paranthesis[j];
+            test+=paranthesis[i+j];
             if(isValid(test)){
 	        	validParenthesis.push_back(test);
 			}
@@ -60,7 +61,7 @@ int main(){
     }
     //printing out the elements of the validParenthesis vector
     for(int i=0;i<validParenthesis.size();i++){
-        	cout<<validParenthesis[i]<<endl;
+        cout<<validParenthesis[i]<<endl;
     }
 	return 0;
 }
