@@ -3,8 +3,6 @@
 #include<cmath>
 using namespace std;
 void resize (int*& dynamicArray, int& capacity, int newCapacity) {
-	capacity = sqrt(capacity);
-	capacity = pow(2,capacity);
     while(capacity < newCapacity){
         capacity = capacity * 2;
     }
@@ -16,7 +14,10 @@ void append (int*& dynamicArray, int& size, int& capacity, int value) {
 int main(){
     int beginSize,add;
     cin >> beginSize >> add;
-
+	
+	beginSize = sqrt(beginSize);
+	beginSize = pow(2,beginSize);
+	
     int* dynamicArray;
 
     if(beginSize >= add){
@@ -28,8 +29,8 @@ int main(){
         }
     }
     else if(beginSize < add){
-        resize(dynamicArray,beginSize,add);
     	dynamicArray=new int(sizeof(beginSize));
+        resize(dynamicArray,beginSize,add);
         for(int i=0;i<add;i++){
             int num;
             cin>>num;
