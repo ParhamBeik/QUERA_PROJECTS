@@ -9,15 +9,15 @@ int main(void){
     int i=0;
     bool isValid=true;
     while(i!=str.size()-1){
-        //F
+        //adding F to vector
         if(str[i]=='F'){
             list.push_back(str[i]);
         }
-        //I
+        //adding I to vector
         else if(str[i]=='I'){
             list.push_back(str[i]);
         }
-        //W
+        //pairing W to F and erasing F from vector
         else if(str[i]=='W'){
             if(list[list.size()-1]!='F'){
                 isValid=false;
@@ -25,7 +25,7 @@ int main(void){
             }
             list.pop_back();
         }
-        //E
+        //pairing E to I and erasing E from vector
         else if(str[i]=='E'){
             if(list[list.size()-1]!='I'){
                 isValid=false;
@@ -33,7 +33,9 @@ int main(void){
             }
             list.pop_back();
         }
-        
+        if(list.size()==0){
+            break;
+        }
         i++;
     }
 
