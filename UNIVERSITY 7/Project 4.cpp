@@ -7,16 +7,16 @@ int main(){
     cin>>*word;
     *word+="*";
 
-    int* round;
-    round= new int;
+    int* round = new int;
     round[0]=0;
     
     while((*word)[*round]!=42){
         round[0]++;
     }
 	
-    for(int i=round[0]-1;i>-1;i--){
-    	cout<<(*word)[i];
+    while(round[0] != 0){
+    	cout<<(*word)[round[0]-1];
+        round[0]--;
     }
     return 0;
 }
