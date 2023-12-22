@@ -32,7 +32,7 @@ int main(){
 		//R
 		if(str[x]==82){
 			j++;
-			if(j > listOfColumns[i]){
+			if(j > listOfColumns[i]-1){
 				i++;
 				if(i<rows){
 					j=0;
