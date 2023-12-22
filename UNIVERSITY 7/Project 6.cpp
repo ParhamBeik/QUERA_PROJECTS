@@ -1,6 +1,6 @@
 #include<iostream>
 #include<cstdlib>
-#include<cmath>
+
 using namespace std;
 void resize (int*& dynamicArray, int& capacity, int newCapacity) {
     while(capacity < newCapacity){
@@ -15,13 +15,10 @@ int main(){
     int beginSize,add;
     cin >> beginSize >> add;
 	
-	beginSize = sqrt(beginSize);
-	beginSize = pow(2,beginSize);
-	
     int* dynamicArray;
 
     if(beginSize >= add){
-    	dynamicArray=new int(sizeof(beginSize));
+    	dynamicArray=new int[beginSize];
         for(int i=0;i<add;i++){
             int num;
             cin>>num;
@@ -29,7 +26,7 @@ int main(){
         }
     }
     else if(beginSize < add){
-    	dynamicArray=new int(sizeof(beginSize));
+    	dynamicArray = new int[beginSize];
         resize(dynamicArray,beginSize,add);
         for(int i=0;i<add;i++){
             int num;
