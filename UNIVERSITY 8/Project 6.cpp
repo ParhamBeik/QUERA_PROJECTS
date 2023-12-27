@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include<sstream>
+#include<algorithm>
 using namespace std;
 int main(){
     int round;
@@ -41,6 +42,7 @@ int main(){
                 list.push_back(i);
             }
         }
+        sort(list.begin(),list.end());
         bool isTrue=true;
         for(int k=15;k<=24;k++){
             int a=0;
