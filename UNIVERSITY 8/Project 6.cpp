@@ -7,13 +7,16 @@ using namespace std;
 int main(){
     int round;
     cin>>round;
+    
+    cin.ignore();
+    
     vector<int> list;
 
     bool isValid[round];
     for(int i=0;i<round;i++){
         isValid[i]=false;
     }
-
+    
     for(int i=0;i<round;i++){
         for(int j=0;j<3;j++){
             string str;
@@ -60,6 +63,7 @@ int main(){
         if(!(isTrue)){
             isValid[i]=true;
         }
+        list.clear();
     }
     
     for(int i=0;i<round;i++){
