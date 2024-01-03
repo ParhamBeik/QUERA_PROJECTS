@@ -78,29 +78,83 @@ BLACK: #1c1c1c
 	background-color: transparent;
 }
 .SearchBar{
-	height: 50px;
-	width: 290px;
-	margin-top: 12px;
-	margin-left: 90px;
-	background-color: #EFEFEF;
-	border-radius: 25px;
-	
-}
-.SearchIcon{
-	width : 10px;
-	height: 20px;
-	margin-top: -2px;
-	margin-left: 255px;
-}
-.SearchBarText{
-	height: 40px;
-	width: 40px;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 27px;
 }
 .Harmburger{
-
+	width: 30px;
+	height: 22px;
+	margin-top: 11px;
+}
+.InputField{
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+.innerInputField{
+	width: 280px;
+	height : 50px;
+	border: none;
+	border-radius: 50px;
+	background-color: #efefef;
+	font-size: large;
+	padding: 20px 40px 20px 20px;
+}
+.SearchIcon{
+	position: absolute;
+	right: 15px;
 }
 .MenuBar{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	gap: 25px;
+}
+.MenuBar p{
+	font-weight: bold;
+}
+.AlarmAndUnderline{
+	text-decoration: underline 5px #4f4cf0;
+	text-underline-offset: 10px;
 
 }
+.TotalAlarms{
+	margin: 35px 35px 35px 35px;
+}
+.Alarm{
+	padding-bottom: 20px;
+}
+.TopAlarm{
+	display: flex;
+	justify-content: space-between;
+}
+.time{
+	margin-top: -10px;
+	font-size: 60px;
 
+}
+.BottomAlarm{
+	margin-top: 7px;
+	margin-left: 10px;
+}
 
+.addingButtonDiv{
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	left: 200px;
+	bottom: 180px;
+}
+.addingButton{
+	position: fixed;
+	background-image: url(./images/plus.png);
+	background-color: #4f4cf0;
+	width: 90px;
+	height: 90px;
+	border: none;
+	border-radius: 90px;
+	background-repeat: no-repeat;
+	background-position: center;
+	box-shadow: 0 15px 30px rgb(128,128,128);
+}

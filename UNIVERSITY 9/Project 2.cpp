@@ -8,18 +8,21 @@ int main() {
     fstream phoneFile;
     fstream nameFile;
     fstream resaultFile;
-
-    phoneFile.open("phones.txt", ios::in);
+    //GETTING THE NUMBER OF NAMES IN THE LIST OF NAMES
     nameFile.open("names.txt", ios::in);
+    string name;
+    int count=0;
+    while(getline(nameFile,name)){
+		count++;
+	}
+    nameFile.close();
+    //READING THE FILES ALL AT ONCE AND OUTPUTING THE RESAULT TO THE RESAULTFILE.JSON
+    nameFile.open("names.txt", ios::in);
+    phoneFile.open("phones.txt", ios::in);
     resaultFile.open("resault.json" , ios::out);
 
     if(phoneFile.is_open() && nameFile.is_open() && resaultFile.is_open()){
     	string var;
-    	int count=0;
-    	while(getline(nameFile,var)){
-    		count++;
-		}
-    	
     	int counter=0;
         string name , phone;
         resaultFile << "{" << endl;
@@ -36,14 +39,14 @@ int main() {
                 phone="null";
             }
             
-            if(phone=="null" && counter!=count ){
+            if(phone=="null" && counter!=count){
             	resaultFile << "    " << '"' << name << '"' << ": " << phone << ',' << endl;
 			}
 			else if(counter!=count){
-				resaultFile << "    " << '"' << name << '"' << ": " << '"' << phone << '"' << ',' << endl;
+				resaultFile << "    " << '"' << name << '"' << ": " << '"' << phone << '"' << endl;
 			}
 			else{
-				resaultFile << "    " << '"' << name << '"' << ": " << '"' << phone << '"' << endl;
+				resaultFile << "    " << '"' << name << '"' << ": " << '"' << phone << '"'<< endl;
 			}
 			counter++;
         }
