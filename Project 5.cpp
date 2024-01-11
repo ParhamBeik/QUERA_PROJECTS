@@ -36,7 +36,7 @@ void arrayLogic(string type ,int round){
         
         printArray(list,round);
     }
-    else if(type=="long long"){
+    else if(type=="long"){
         long long list[round];
         for(int i=0;i<round;i++){
             cin >> list[i]; 
@@ -131,8 +131,14 @@ void arrayLogic(string type ,int round){
 int main(){
     string type;
     int round;
-    cin >> type >> round;
-	
+    cin >> type;
+    if(type=="long"){
+        cin >> type >> round;
+    }
+    else{
+        cin >> round;
+    }
+
     arrayLogic(type,round);
     
     return 0;

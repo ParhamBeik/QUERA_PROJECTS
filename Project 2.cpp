@@ -8,13 +8,13 @@ struct Sleep {
     Sleep* nextLayer;
 };
 
-bool check(Sleep* node,int round){
+void check(Sleep* node,int round){
 	
 	bool isAlive[round];
     
-	for(int i=0;i<round;i++){
-		if(node->security <= 2 && node->State == "nightmare"){
-			isAlive[i]==false;
+	for(int i=round-1;i > -1;i--){
+		if(node->security < 3 && node->State == "nightmare"){
+			isAlive[i]=false;
 		}
 		else{
 			isAlive[i]=true;
@@ -24,26 +24,25 @@ bool check(Sleep* node,int round){
 
 	int count=0;
 
-    for(int i=0;i<round;i++){
+    for(int i=round-1;i > -1;i--){
     	if(!(isAlive[i])){
     		count++;
 		}
 	}
-
-	if(count%2==0){
+	if(count%2==0){ 
 		if(count >= round/2){
-			return false;
+			cout << "he is dead";
 		}
 		else{
-			return true;
+			cout << "he is still alive";
 		}	
 	}
 	else{
 		if(count >= round/2 + 1){
-			return false;
+			cout << "he is dead";
 		}
 		else{
-			return true;
+			cout << "he is still alive";
 		}	
 	}
 }
@@ -68,17 +67,7 @@ int main(){
         head = temp;
     }
     
-    for(int i=0;i<round;i++){
-    	
-	}
-    bool isAlive = check(head,round);
-   
-    if(isAlive){
-   		cout << "he is still alive";
-	}
-	else{
-		cout << "he is dead";
-	}
+    check(head,round);
     
     return 0;
 }
