@@ -4,14 +4,13 @@ using namespace std;
 int main(){
     int num;
     cin >> num;
-    int copyNum=num , sum=1;
-    while(copyNum > 1){
-        for(int i=2;i <= sqrt(num);i++){
-           while(copyNum%i==0){
-            copyNum/=i;
-            sum+=copyNum;
-           }
+    int i=1 , sum=0 , r;
+    while(i < num){
+        r = num%i;
+        if(r==0){
+            sum += i;
         }
+        i++;
     }
     if(sum==num){
         cout << "YES";
