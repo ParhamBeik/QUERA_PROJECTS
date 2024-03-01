@@ -16,7 +16,7 @@ class Person {
         }
         string getName(){
             return name;
-        }   
+        }
         int getAge(){
             return age;
         }
@@ -119,6 +119,8 @@ class Apple : public SliceableFruit {
         }
 };
 
+
+
 class PeelableFruit : public Fruit{
     protected:
         PeelableFruit() = default;
@@ -208,6 +210,24 @@ class Grocery : public Store {
 //---------------------------------------------------------------------------------------------------
 
 int main(){
+    string name ,color ;
+    int price;
+    double calories;
+    float weight;
+    cin >> name >> price >> calories >> weight >> color;
 
+    Apple apple(name , price , calories , weight , color);
+
+    int slices;
+    cin >> slices;
+    cout << "The slices are:" << endl;
+    
+    for(int i=1;i <= slices;i++){
+        cout << i << ". " << apple.getName()<< endl;
+        cout << "- " << apple.slice(slices)->getPrice()<< endl;
+        cout << "- " << apple.slice(slices)->getCalories()<< endl;
+        cout << "- " << apple.slice(slices)->getWeight()<< endl;
+        cout << "- " << apple.getColor()<< endl;
+    }
     return 0;
 }

@@ -16,7 +16,7 @@ class Person {
         }
         string getName(){
             return name;
-        }   
+        }
         int getAge(){
             return age;
         }
@@ -119,6 +119,7 @@ class Apple : public SliceableFruit {
         }
 };
 
+
 class PeelableFruit : public Fruit{
     protected:
         PeelableFruit() = default;
@@ -208,6 +209,36 @@ class Grocery : public Store {
 //---------------------------------------------------------------------------------------------------
 
 int main(){
+    Grocery grocery;
+    SalesPerson* owner = new SalesPerson("Herbod", 20, "Businessman");
+    grocery.setOwner(owner);
 
+    int count;
+    cin >> count;
+    for(int i=0;i < count;i++){
+        string name;
+        cin >> name;
+        if(name == "Banana"){
+            cin >> name;
+            int price;
+            double calories;
+            float weight;
+            string originCountry;
+            cin >> originCountry >> price >> calories >> weight;
+            Banana banana(name , price , calories , weight , originCountry);
+            grocery.addFruit(&banana);
+        }
+        else{
+            cin >> name;
+            int price;
+            double calories;
+            float weight;
+            string color;
+            cin >> color >> price >> calories >> weight;
+            Apple apple(name , price , calories , weight , color);
+            grocery.addFruit(&apple);
+        }
+    }
+    
     return 0;
 }
