@@ -32,6 +32,7 @@ class Human : public Person {
         Experience exp;
         Stamina stamina;
         Human(string n):Person(n),exp(this),backpack(??){}
+        Backpack* getBackpack();
 };
 
 // *----------------------------------------------------------------*
@@ -157,34 +158,43 @@ class Backpack {
         vector<pair<Food , int>> FoodItems;
         vector<pair<Medicine , int>> MedicineItems;
         vector<pair<Throwable , int>> ThrowableItems;
-        vector<Permanent> PermanentItems;
+        vector<pair<WarmWeapon , int>> WarmWeaponItems;
+        vector<pair<ColdWeapon , int>> ColdWeaponItems;
     public:
-        void addFoodItems(const Food& foodItem, int quantity);
-        void addMedicineItems(const Medicine& medicineItem, int quantity);
-        void addThrowableItems(const Throwable& throwableItem, int quantity);
-        void addPermanentItems(const Permanent& permanentItem);
+        void addFoodItem(const Food& foodItem, int quantity);
+        void addMedicineItem(const Medicine& medicineItem, int quantity);
+        void addThrowableItem(const Throwable& throwableItem, int quantity);
+        void addWarmWeaponItem(const WarmWeapon& WarmWeaponItem);
+        void addColdWeaponItem(const ColdWeapon& ColdWeaponItem);
 
-        void removeFoodItems(const Food& foodItem, int quantity);
-        void removeMedicineItems(const Medicine& medicineItem, int quantity);
-        void removeThrowableItems(const Throwable& throwableItem, int quantity);
-        void removePermanentItems(const Permanent& permanentItem);
+        void removeFoodItem(const Food& foodItem);
+        void removeMedicineItem(const Medicine& medicineItem);
+        void removeThrowableItem(const Throwable& throwableItem);
+        void removeWarmWeaponItem(const WarmWeapon& WarmWeaponItem);
+        void removeColdWeaponItem(const ColdWeapon& ColdWeaponItem);
 
         int getFoodItemsCount();
         int getMedicineItemsCount();
         int getThrowableItemsCount();
-        int getPermanentItemsCount();
+        int getWarmWeaponItemsCount();
+        int getColdWeaponItemsCount();
 
         int getSpecificFoodItemCount(const Food& specificItem) const;
         int getSpecificMedicineItemCount(const Medicine& specificItem) const;
         int getSpecificThrowableItemCount(const Throwable& specificItem) const;
-        int getSpecificPermanentItemCount(const Permanent& specificItem) const;
+        int getSpecificWarmWeaponItemCount(const WarmWeapon& WarmWeaponItem) const;
+        int getSpecificColdWeaponItemCount(const ColdWeapon& ColdWeaponItem) const;
         
         void clearFoodItems();
         void clearMedicineItems();
         void clearThrowableItems();
-        void clearPermanentItems();
+        void clearWarmWeaponItems();
+        void clearColdWeaponItems();
 
-        // void useItem(const string& itemName);
+        void useFoodItemCount(const Food& specificItem, int quantity);
+        void useMedicineItemCount(const Medicine& specificItem, int quantity);
+        void useThrowableItemCount(const Throwable& specificItem, int quantity);
+
 };
 
 // *----------------------------------------------------------------*
@@ -206,13 +216,16 @@ class BankAccount {
 
 class Items {
     protected:
+        string type;
         string name;
         int price;
+        vector <Items> shop_items;
     public:
         Items(string,int);
-        void buy();
-        virtual void addToBackpack();
+        virtual void buy(Player& player);        //buy Item and add it into player's backpack
         virtual void showItems();
+        virtual bool operator==(const Items& other) const;
+        void addToShop(Items);
 };
 
 // *----------------------------------------------------------------*
@@ -220,18 +233,20 @@ class Items {
 
 class Permanent : public Items {
     private:
-        vector<Permanent> permanentItems;
         int damage;
     public:
-        Permanent();
+        Permanent(string,int);
         void showItems() override;
-        void addToBackpack() override;
 };
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
-class WarmWeapon : public Permanent {};
+class WarmWeapon : public Permanent {
+    private:
+        WarmWeaponAbility wwa;
+
+};
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
@@ -262,10 +277,7 @@ class Throwable : public Items {};
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
-void printWithDelay() {
-    int delay_ms;
-    string text;
-}
+void printWithDelay() {}
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
