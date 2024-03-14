@@ -433,6 +433,61 @@ void printWithDelay() {
     }
 }
 
+
+class Factory {
+    public:
+        static shared_ptr<Human> createCharacter(const string& name, const string& type);
+
+    private:
+        static shared_ptr<Human> createJonSnow(const string& name);
+        static shared_ptr<Human> createJaimeLannister(const string& name);
+        static shared_ptr<Human> createDaenerys(const string& name);
+        static shared_ptr<Human> createStannis(const string& name);
+        static shared_ptr<Human> createJoffrey(const string& name);
+        static shared_ptr<Human> createTheonGreyjoy(const string& name);
+
+        shared_ptr<Human> Factory::createCharacter(const string& name, const string& type) {
+            if (type == "JonSnow") {
+                return createJonSnow(name);
+            } else if (type == "JaimeLannister") {
+                return createJaimeLannister(name);
+            } else if (type == "Daenerys") {
+                return createDaenerys(name);
+            } else if (type == "Stannis") {
+                return createStannis(name);
+            } else if (type == "Joffrey") {
+                return createJoffrey(name);
+            } else if (type == "TheonGreyjoy") {
+                return createTheonGreyjoy(name);
+            } else {
+                return nullptr; // یا یک اشاره‌گر به شخصیت پیشفرض
+            }
+        }
+
+    shared_ptr<Human> Factory::createJonSnow(const string& name) {
+        return make_shared<Human>(name, /*age*/ 30, /*exp*/ 0, /*hp*/ 100, /*stamina*/ 100, /*damage*/ 70, /*money*/ 100);
+    }
+
+    shared_ptr<Human> Factory::createJaimeLannister(const string& name) {
+        return make_shared<Human>(name, /*age*/ 40, /*exp*/ 0, /*hp*/ 120, /*stamina*/ 80, /*damage*/ 80, /*money*/ 150);
+    }
+
+    shared_ptr<Human> Factory::createDaenerys(const string& name) {
+        return make_shared<Human>(name, /*age*/ 25, /*exp*/ 0, /*hp*/ 90, /*stamina*/ 110, /*damage*/ 60, /*money*/ 120);
+    }
+
+    shared_ptr<Human> Factory::createStannis(const string& name) {
+        return make_shared<Human>(name, /*age*/ 45, /*exp*/ 0, /*hp*/ 110, /*stamina*/ 90, /*damage*/ 75, /*money*/ 140);
+    }
+
+    shared_ptr<Human> Factory::createJoffrey(const string& name) {
+        return make_shared<Human>(name, /*age*/ 20, /*exp*/ 0, /*hp*/ 80, /*stamina*/ 70, /*damage*/ 90, /*money*/ 200);
+    }
+
+    shared_ptr<Human> Factory::createTheonGreyjoy(const string& name) {
+        return make_shared<Human>(name, /*age*/ 35, /*exp*/ 0, /*hp*/ 85, /*stamina*/ 85, /*damage*/ 65, /*money*/ 110);
+    }
+}
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
