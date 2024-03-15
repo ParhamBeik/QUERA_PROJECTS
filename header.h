@@ -2,71 +2,13 @@
 #define HEADER
 #include<iostream>
 #include<string>
-#include<vector>
+#include <memory>
+#include <vector>
 #include<algorithm>
 #include <thread>
 #include <chrono>
 
 using namespace std;
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class Person {
-    private:
-        string name;
-        int level;
-        Health hp;
-    public:
-        Person(string);
-        void updateLevel();
-};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class Human : public Person {
-    private:
-        Backpack backpack;
-    public:
-        Experience exp;
-        Stamina stamina;
-        Human(string n):Person(n),exp(this),backpack(??){}
-        Backpack* getBackpack();
-};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class Player : public Human {
-    private:
-        int age;
-        string gender;
-        BankAccount bankAccount;
-    public:
-        Player(string n,string g,int a):Human(n,this,??),age(a),gender(g),bankAccount(??){}
-        BankAccount* getBankAccount();
-};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class SmartZombie : public Human {};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class Zombie : public Person {};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class BaseZombie : public Zombie {};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class AdvZombiee : public Zombie {};
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
@@ -78,6 +20,8 @@ private :
     int maxHealth;
 public :
     Health();
+    int getCurrentHealth();
+    int getMaxHealth();
     void decreaseHealth(int damage);
     void increaseHealth (int amount);
 };
@@ -94,6 +38,7 @@ public :
     void decreaseStamina(int amount);
     void increaseStamina(int amount);
     void updateMaximumStamina();
+    int getCurrentStamina();
 };
 
 // *----------------------------------------------------------------*
@@ -105,10 +50,11 @@ class Experience {
         int currentExp;
         Human *humanObj;
     public:
-        Experience(Human*);
+        Experience(Human* h = nullptr) : humanObj(h), maximum(0), currentExp(0) {}
         void updateMaximum();
         void setCurrentExp(int,int,int);
         void increaseExp(int);
+        int getCurrentExp();
 };
 
 // *----------------------------------------------------------------*
@@ -123,6 +69,7 @@ class Skills {
         Skills(int,int);
         void upgradeSkill(BankAccount*);
         void setUpgradePrice();
+        int getCurrentSkill();
 
 };
 
@@ -204,11 +151,87 @@ class BankAccount {
     protected:
         int balance;
     public:
-        BankAccount();
+        BankAccount(int b = 0) : balance(b) {}
         int getBalance();
         void deposit(int amount);
-        void withdraw(int amount);
+        bool withdraw(int amount);
 };
+
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class Person {
+    protected:
+        string name;
+        int level;
+        int damage; 
+    public:
+        Health hp;
+        Person(string n) : name(n), level(1), damage(0) {}
+        void updateLevel();
+        int getLevel();
+        string getName();  // Getter for name
+        int getDamage();  // Getter for damage
+        int getHealthPoints();  // Getter for health points
+};
+
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class Human : public Person {
+private:
+    Backpack backpack;
+    BankAccount bankAccount;
+public:
+    Experience exp;
+    Stamina stamina;
+    Human(string n) : Person(n) {}
+    Backpack* getBackpack();
+    BankAccount* getBankAccount();
+    int getExperience();  // Getter for experience
+    int getStamina();  // Getter for stamina
+    int getMoney();  // Getter for money
+};
+
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class Player : public Human {
+private:
+    int age;
+    string gender;
+public:
+    Player(string n, string g, int a) : Human(n), age(a), gender(g) {}
+    int getAge();  // Getter for age
+    string getGender();  // Getter for gender
+};
+
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class SmartZombie : public Human {};
+
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class Zombie : public Person {
+public:
+    Zombie(string n , int dmg);
+    void attack();
+    int getHealth();
+    void takeDamage(int amount);
+};
+
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class BasicZombie : public Zombie {};
+
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class AdvZombiee : public Zombie {};
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
@@ -219,67 +242,149 @@ class Items {
         string type;
         string name;
         int price;
-        vector <Items> shop_items;
+        static vector <Items*> shop_items;
     public:
-        Items(string,int);
-        virtual void buy(Player& player);        //buy Item and add it into player's backpack
-        virtual void showItems();
-        virtual bool operator==(const Items& other) const;
-        void addToShop(Items);
-};
+        Items(string,int,string);
+        virtual void showItems(){}                       //show the available items in the shop based on their types
+        virtual void addToVectors(){}                    //add the bought item to the vector
+        virtual void use(Player&){}                      //use consumable items and increase health or stamina 
+        bool operator==(const Items& other) const;       //check equality of two object names
+}; 
+vector <Items*> Items::shop_items;     
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
 class Permanent : public Items {
-    private:
-        int damage;
+    protected:
+        int exp;
+        static vector <Permanent*> shop_items_permanent;
     public:
-        Permanent(string,int);
-        void showItems() override;
+        Permanent(string,int,string,int);       
+        virtual void buy(Player&){}                      //buy item and add it into player's backpack
+        virtual void Attack(Human,Human){}               //calculate the damage of attacker and reduce it from attacked health
 };
+vector <Permanent*> Permanent::shop_items_permanent;
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
 class WarmWeapon : public Permanent {
     private:
+        static vector <WarmWeapon*> shop_items_permanent_warmweapon;
         WarmWeaponAbility wwa;
-
+    public:
+        WarmWeapon(string,int,int,int);
+        void showItems() override;
+        void buy(Player&) override;
+        void addToVectors() override;
+        void Attack(Human,Human) override;
+        friend ostream& operator<<(ostream&,WarmWeapon&);
 };
+vector <WarmWeapon*> WarmWeapon::shop_items_permanent_warmweapon;
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
-class ColdWeapon : public Permanent {};
+class ColdWeapon : public Permanent {
+    private:
+        static vector <ColdWeapon*> shop_items_permanent_coldweapon;
+        ColdWeaponAbility cwa;
+    public:
+        ColdWeapon(string,int,int,int);
+        void showItems() override;
+        void buy(Player&) override;
+        void addToVectors() override;
+        void Attack(Human,Human) override;
+        friend ostream& operator<<(ostream&,ColdWeapon&);
+};
+vector <ColdWeapon*> ColdWeapon::shop_items_permanent_coldweapon;
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
-class Consumable : public Items {};
+class Throwable : public Items {
+    private:
+        int exp;
+        static vector <Throwable*> shop_items_throwable;
+        ThrowableWeaponAbility twa;
+    public:
+        Throwable(string,int,int,int);
+        void showItems() override;
+        void buy(Player&,int);
+        void addToVectors() override;
+        void Throw(Human,Human);
+        friend ostream& operator<<(ostream&,Throwable&);
+};
+vector <Throwable*> Throwable::shop_items_throwable;
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
-class Medicine : public Consumable {};
+class Medicine : public Items {
+    private:
+        int heal;
+        static vector <Medicine*> shop_items_medicine;
+    public:
+        Medicine(string,int,int);
+        void showItems() override;
+        void buy(Player&,int);
+        void addToVectors() override;
+        void use(Player&) override;
+        friend ostream& operator<<(ostream&,Medicine&);
+};
+vector <Medicine*> Medicine::shop_items_medicine;
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
-class Food : public Consumable {};
+class Food : public Items {
+    private:
+        int strength;
+        static vector <Food*> shop_items_food;
+    public:
+        Food(string,int,int);
+        void showItems() override;
+        void buy(Player&,int);
+        void addToVectors() override;
+        void use(Player&) override;
+        friend ostream& operator<<(ostream&,Food&);
+};
+vector <Food*> Food::shop_items_food;
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
 
-class Throwable : public Items {};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
+void Menu();
 
 void printWithDelay() {}
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
+
+class Factory {
+public:
+    static shared_ptr<Human> createCharacter(const string &name, const string &type);
+
+private:
+    static shared_ptr<Human> createJonSnow(const string &name);
+
+    static shared_ptr<Human> createJaimeLannister(const string &name);
+
+    static shared_ptr<Human> createDaenerys(const string &name);
+
+    static shared_ptr<Human> createStannis(const string &name);
+
+    static shared_ptr<Human> createJoffrey(const string &name);
+
+    static shared_ptr<Human> createTheonGreyjoy(const string &name);
+
+
+};
+
 // *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
 #endif
