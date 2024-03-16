@@ -4,7 +4,10 @@
 #include<algorithm>
 #include <thread>
 #include <chrono>
-#include "header.h"
+
+#include "Other.h"
+#include "Items.h"
+#include "Person.h"
 
 using namespace std;
 
