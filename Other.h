@@ -9,6 +9,8 @@
 #include <thread>
 #include <chrono>
 
+#include "Items.h"
+
 using namespace std;
 
 // *----------------------------------------------------------------*
@@ -27,6 +29,18 @@ public :
     void increaseHealth (int amount);
 };
 
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class BankAccount {
+    protected:
+        int balance;
+    public:
+        BankAccount(int b = 0) : balance(b) {}
+        int getBalance();
+        void deposit(int amount);
+        bool withdraw(int amount);
+};
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
@@ -142,19 +156,6 @@ class Backpack {
         void useMedicineItemCount(const Medicine& specificItem, int quantity);
         void useThrowableItemCount(const Throwable& specificItem, int quantity);
 
-};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class BankAccount {
-    protected:
-        int balance;
-    public:
-        BankAccount(int b = 0) : balance(b) {}
-        int getBalance();
-        void deposit(int amount);
-        bool withdraw(int amount);
 };
 
 // *----------------------------------------------------------------*
