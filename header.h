@@ -379,8 +379,6 @@ private:
     static shared_ptr<Human> createJoffrey(const string &name);
 
     static shared_ptr<Human> createTheonGreyjoy(const string &name);
-
-
 };
 
 // *----------------------------------------------------------------*
