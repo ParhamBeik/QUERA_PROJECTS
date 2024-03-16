@@ -9,9 +9,6 @@
 #include <thread>
 #include <chrono>
 
-#include "Items.h"
-#include "Person.h"
-
 using namespace std;
 
 // *----------------------------------------------------------------*
