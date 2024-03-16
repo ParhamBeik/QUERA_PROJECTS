@@ -7,9 +7,9 @@
 #include <ctime>
 #include <cstdlib>
 
+#include "Items.h" 
 #include "Other.h"
 #include "Person.h"
-#include "Items.h" 
 
 using namespace std;
 
