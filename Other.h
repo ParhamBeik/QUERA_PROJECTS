@@ -52,9 +52,8 @@ class Experience {
     private:
         int maximum;
         int currentExp;
-        Human *humanObj;
     public:
-        Experience(Human* h = nullptr) : humanObj(h), maximum(0), currentExp(0) {}
+        Experience() : maximum(0), currentExp(0) {}
         void updateMaximum();
         void setCurrentExp(int,int,int);
         void increaseExp(int);

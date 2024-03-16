@@ -45,6 +45,8 @@ public:
     int getExperience();  // Getter for experience
     int getStamina();  // Getter for stamina
     int getMoney();  // Getter for money
+    void updateLevel();  // Update level method in Human class
+    void updateMaximumStamina();  // Update maximum stamina method in Human class
 };
 
 // *----------------------------------------------------------------*
@@ -124,9 +126,8 @@ class Experience {
     private:
         int maximum;
         int currentExp;
-        Human *humanObj;
     public:
-        Experience(Human* h = nullptr) : humanObj(h), maximum(0), currentExp(0) {}
+        Experience() : maximum(0), currentExp(0) {}
         void updateMaximum();
         void setCurrentExp(int,int,int);
         void increaseExp(int);
