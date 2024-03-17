@@ -4,16 +4,18 @@
 #include<algorithm>
 #include <thread>
 #include <chrono>
+#include <map>
+#include <conio.h>
 
-#include "Other.h"
-#include "Items.h"
-#include "Person.h"
+#include "file.h"
 
 using namespace std;
 
 int main(){
-
-    printWithDelay();
-    
-    return 0;
+	createWarmWeapons();
+	createColdWeapons();
+	createThrowableItems();
+	createMedicines();
+	createFoods();
+	ShopMenu();
 }
