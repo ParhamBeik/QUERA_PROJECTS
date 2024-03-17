@@ -10,7 +10,6 @@
 #include <chrono>
 
 #include "Other.h"
-#include "Items.h"
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
@@ -24,7 +23,6 @@ class Person {
     public:
         Health hp;
         Person(string n) : name(n), level(1), damage(0) {}
-        void updateLevel();
         int getLevel();
         string getName();  // Getter for name
         int getDamage();  // Getter for damage
@@ -47,6 +45,8 @@ public:
     int getExperience();  // Getter for experience
     int getStamina();  // Getter for stamina
     int getMoney();  // Getter for money
+    void updateLevel();  // Update level method in Human class
+    void updateMaximumStamina();  // Update maximum stamina method in Human class
 };
 
 // *----------------------------------------------------------------*

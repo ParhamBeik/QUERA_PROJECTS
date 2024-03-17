@@ -69,33 +69,29 @@ int Stamina :: getCurrentStamina(){
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
-Experience :: Experience(Human *h):humanObj(h),maximum(100),currentExp(0){}
+Experience :: Experience() : maximum(100), currentExp(0) {}
 
 void Experience :: updateMaximum(){
-    maximum+=100;
+    maximum += 100;
 }
 
 int Experience :: getCurrentExp(){
     return currentExp;
 }
 
-void Experience :: setCurrentExp(int selfDamage,int enemyDamage,int usedStamina){
-    currentExp+=(0.5*selfDamage)+(0.2*enemyDamage)+(0.3*usedStamina);
-    if(currentExp>=maximum){
-        currentExp=0;
+void Experience :: setCurrentExp(int selfDamage, int enemyDamage, int usedStamina){
+    currentExp += (0.5 * selfDamage) + (0.2 * enemyDamage) + (0.3 * usedStamina);
+    if(currentExp >= maximum){
+        currentExp = 0;
         updateMaximum();
-        humanObj->updateLevel();
-        humanObj->stamina.updateMaximumStamina();
     }
 }
 
-void Experience :: increaseExp(int amount){
-    currentExp+=amount;
-    if(currentExp>=maximum){
-        currentExp=0;
-        humanObj->exp.updateMaximum();
-        humanObj->updateLevel();
-        humanObj->stamina.updateMaximumStamina();
+void Experience::increaseExp(int amount){
+    currentExp += amount;
+    if(currentExp >= maximum){
+        currentExp = 0;
+        updateMaximum();
     }
 }
 

@@ -21,10 +21,6 @@ using namespace std;
 
 Person::Person(string n) : name(n), level(1), damage(0) {}
 
-void Person::updateLevel() {
-    level++;
-}
-
 int Person::getLevel() {
     return level;
 }
@@ -50,6 +46,14 @@ Backpack* Human::getBackpack() {
     return &backpack;
 }
 
+void Human::updateLevel() {
+    level++;
+}
+
+void Human::updateMaximumStamina() {
+    stamina.updateMaximumStamina();
+}
+
 int Human::getExperience() {
     return exp.getCurrentExp();
 }
@@ -65,6 +69,7 @@ BankAccount* Human::getBankAccount() {
 int Human::getMoney() {
     return bankAccount.getBalance();
 }
+
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*

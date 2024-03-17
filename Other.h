@@ -10,7 +10,6 @@
 #include <chrono>
 
 #include "Items.h"
-#include "Person.h"
 
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
@@ -28,6 +27,18 @@ public :
     void increaseHealth (int amount);
 };
 
+// *----------------------------------------------------------------*
+// *----------------------------------------------------------------*
+
+class BankAccount {
+    protected:
+        int balance;
+    public:
+        BankAccount(int b = 0) : balance(b) {}
+        int getBalance();
+        void deposit(int amount);
+        bool withdraw(int amount);
+};
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
@@ -50,9 +61,8 @@ class Experience {
     private:
         int maximum;
         int currentExp;
-        Human *humanObj;
     public:
-        Experience(Human* h = nullptr) : humanObj(h), maximum(0), currentExp(0) {}
+        Experience() : maximum(0), currentExp(0) {}
         void updateMaximum();
         void setCurrentExp(int,int,int);
         void increaseExp(int);
@@ -144,19 +154,6 @@ class Backpack {
         void useMedicineItemCount(const Medicine& specificItem, int quantity);
         void useThrowableItemCount(const Throwable& specificItem, int quantity);
 
-};
-
-// *----------------------------------------------------------------*
-// *----------------------------------------------------------------*
-
-class BankAccount {
-    protected:
-        int balance;
-    public:
-        BankAccount(int b = 0) : balance(b) {}
-        int getBalance();
-        void deposit(int amount);
-        bool withdraw(int amount);
 };
 
 // *----------------------------------------------------------------*
