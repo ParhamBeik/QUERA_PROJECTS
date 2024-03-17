@@ -149,11 +149,33 @@ class ThrowableWeaponAbility : public Skills {
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
+class Backpack {
+    private:
+        map <Food , int> FoodItems;
+        map <Medicine , int> MedicineItems;
+        map <Throwable , int> ThrowableItems;
+        vector <WarmWeapon> WarmWeaponItems;
+        vector <ColdWeapon> ColdWeaponItems;
+        void removeFoodItem(const Food);
+        void removeMedicineItem(const Medicine);
+        void removeThrowableItem(const Throwable);
 class Person {
     protected:
         string name;
         int level;
     public:
+        Backpack(){}
+        void addFoodItem(const Food,int);
+        void addMedicineItem(const Medicine,int);
+        void addThrowableItem(const Throwable,int);
+        void addWarmWeaponItem(const WarmWeapon);
+        void addColdWeaponItem(const ColdWeapon);
+        bool warmWeaponExistence(const WarmWeapon);
+        bool coldWeaponExistence(const ColdWeapon);
+        void useFoodItemCount(const Food specificItem);
+        void useMedicineItemCount(const Medicine specificItem);
+        void useThrowableItemCount(const Throwable specificItem);
+        void showItems();
         Health hp;
         Person(string n);
         void updateLevel();
@@ -212,6 +234,15 @@ class SmartZombie : public Human {
 // *----------------------------------------------------------------*
 // *----------------------------------------------------------------*
 
+class BankAccount {
+    protected:
+        int balance;
+    public:
+        BankAccount(int);
+        int getBalance();
+        void deposit(int amount);
+        bool withdraw(int amount);
+};
 class Zombie : public Person {
 public:
     Zombie(string n , int dmg);
@@ -251,6 +282,10 @@ class Items {
         bool operator<(const Items&) const;
         string getName();
         string getType();
+        bool operator==(const Items&) const;             //check equality of two object based on names
+        bool operator<(const Items&) const;
+        string getName();
+        string getType();
 }; 
 vector <Items*> Items::shop_items;     
 
@@ -260,8 +295,11 @@ vector <Items*> Items::shop_items;
 class Permanent : public Items {
     protected:
         int harm;
+        int harm;
         int exp;
         static vector <Permanent*> shop_items_permanent;
+        Permanent(string,int,string,int,int); 
+    public:       
         Permanent(string,int,string,int,int); 
     public:       
         virtual void buy(Player&){}                      //buy item and add it into player's backpack
@@ -277,6 +315,8 @@ class WarmWeapon : public Permanent {
         static vector <WarmWeapon*> shop_items_permanent_warmweapon;
         WarmWeaponAbility wwa;
     public:
+        WarmWeapon(string,int,int,int,int);
+        static void showItems();                     //show the available items to buy
         WarmWeapon(string,int,int,int,int);
         static void showItems();                     //show the available items to buy
         void buy(Player&) override;
@@ -296,6 +336,8 @@ class ColdWeapon : public Permanent {
     public:
         ColdWeapon(string,int,int,int,int);
         static void showItems();                     //show the available items to buy
+        ColdWeapon(string,int,int,int,int);
+        static void showItems();                     //show the available items to buy
         void buy(Player&) override;
         void addToVectors() override;
         void Attack(Human,Human) override;
@@ -309,10 +351,13 @@ vector <ColdWeapon*> ColdWeapon::shop_items_permanent_coldweapon;
 class Throwable : public Items {
     private:
         int harm;
+        int harm;
         int exp;
         static vector <Throwable*> shop_items_throwable;
         ThrowableWeaponAbility twa;
     public:
+        Throwable(string,int,int,int,int);
+        static void showItems();                     //show the available items to buy
         Throwable(string,int,int,int,int);
         static void showItems();                     //show the available items to buy
         void buy(Player&,int);
@@ -332,8 +377,10 @@ class Medicine : public Items {
     public:
         Medicine(string,int,int);
         static void showItems();                     //show the available items to buy
+        static void showItems();                     //show the available items to buy
         void buy(Player&,int);
         void addToVectors() override;
+        void use(Human&);
         void use(Human&);
         friend ostream& operator<<(ostream&,Medicine&);
 };
@@ -349,8 +396,10 @@ class Food : public Items {
     public:
         Food(string,int,int);
         static void showItems();                     //show the available items to buy
+        static void showItems();                     //show the available items to buy
         void buy(Player&,int);
         void addToVectors() override;
+        void use(Human&);
         void use(Human&);
         friend ostream& operator<<(ostream&,Food&);
 };
@@ -359,6 +408,16 @@ vector <Food*> Food::shop_items_food;
 void Menu();
 
 void printWithDelay() {}
+
+void ShopMenu();
+void Show_Permanent_Items();
+void Show_Throwable_Items();
+void Show_Consumable_Items();
+void createWarmWeapons();
+void createColdWeapons();
+void createThrowableItems();
+void createMedicines();
+void createFoods();
 
 void ShopMenu();
 void Show_Permanent_Items();
